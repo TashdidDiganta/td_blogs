@@ -57,10 +57,8 @@ if(isset($_POST['registration'])){
         $sql = "INSERT INTO `users` (`name`, `email`, `username`, `password`) VALUES ('$name', '$email', '$username', '$password');";
         $data = mysqli_query($conn, $sql);
     
-    
-    
+
         $user_id = mysqli_insert_id($conn);
-    
         $user_sql = "SELECT * FROM `users` WHERE ID = {$user_id}";
         $user_result = mysqli_query($conn, $user_sql);
         $user_info = mysqli_fetch_assoc($user_result);
@@ -76,13 +74,10 @@ if(isset($_POST['registration'])){
           $_SESSION['username'] = $user_info['username'];
           $_SESSION['login'] = true;
           $msg = "Registration Successfull";
-          header("Location:profile.php?msg=$msg");
+          header("Location:admin.php?msg={$msg}");
       }
         
       }
-  
-  
-  
   }
   
   }
